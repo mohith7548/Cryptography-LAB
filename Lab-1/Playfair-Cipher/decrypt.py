@@ -106,47 +106,51 @@ def validate_constraints(text):
     return "".join(text)
 
 
-def Encrypt(plain_text):
+def Decrypt(plain_text):
     print(plain_text)
-    text = validate_constraints(plain_text)
+    text = plain_text  # validate_constraints(plain_text)
     print(text)
     cipher = []
     i = 0
     while i < len(text):
         print(text[i], text[i + 1])
-        row_res = is_same_row(text[i], text[i + 1])
-        col_res = is_same_col(text[i], text[i + 1])
-        # print(row_res, col_res)
-        if row_res[0]:
-            row = row_res[1]
-            col = row_res[2]
-            print("same row", row, col)
-            cipher.append(MATRIX[row][(col[0] + 1) % 5])
-            cipher.append(MATRIX[row][(col[1] + 1) % 5])
-            # print(cipher)
 
-        elif col_res[0]:
-            col = col_res[1]
-            row = col_res[2]
-            print("same col", row, col)
-            cipher.append(MATRIX[(row[0] + 1) % 5][col])
-            cipher.append(MATRIX[(row[1] + 1) % 5][col])
-            # print(cipher)
+        if text[i] == text[i + 1]:
+            print("same")
+            x = get_pos(text[i])
+            tmp = MATRIX[(x[0] - 1) % 5][(x[1] - 1) % 5]
+            print(tmp)
+            cipher.append(tmp)
+            cipher.append(tmp)
 
         else:
-            print("else")
-            x = get_pos(text[i])
-            y = get_pos(text[i + 1])
-            print(x, y)
-            if x == y:
-                tmp = MATRIX[(x[0] + 1) % 5][(x[1] + 1) % 5]
-                print(tmp)
-                cipher.append(tmp)
-                cipher.append(tmp)
+            row_res = is_same_row(text[i], text[i + 1])
+            col_res = is_same_col(text[i], text[i + 1])
+            # print(row_res, col_res)
+            if row_res[0]:
+                row = row_res[1]
+                col = row_res[2]
+                print("same row", row, col)
+                cipher.append(MATRIX[row][(col[0] - 1) % 5])
+                cipher.append(MATRIX[row][(col[1] - 1) % 5])
+                # print(cipher)
+
+            elif col_res[0]:
+                col = col_res[1]
+                row = col_res[2]
+                print("same col", row, col)
+                cipher.append(MATRIX[(row[0] - 1) % 5][col])
+                cipher.append(MATRIX[(row[1] - 1) % 5][col])
+                # print(cipher)
+
             else:
+                print("else")
+                x = get_pos(text[i])
+                y = get_pos(text[i + 1])
+                print(x, y)
                 cipher.append(MATRIX[x[0]][y[1]])
                 cipher.append(MATRIX[y[0]][x[1]])
-            # print(cipher)
+                # print(cipher)
 
         i += 2
     return "".join(cipher)
@@ -164,7 +168,7 @@ def main():
     plain_text = input("Enter a string: ").upper()
     print()
 
-    cipher = Encrypt(plain_text)
+    cipher = Decrypt(plain_text)
     print(cipher)
 
 
