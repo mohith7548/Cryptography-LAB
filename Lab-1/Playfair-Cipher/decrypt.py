@@ -158,7 +158,7 @@ def Decrypt(plain_text):
 
 def main():
     global KEY
-    print("Playfair Cipher\n")
+    print("Playfair Cipher Decyption Alg\n")
 
     KEY = input("Enter the Key: ").upper()
     print()

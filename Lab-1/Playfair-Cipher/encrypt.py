@@ -154,7 +154,7 @@ def Encrypt(plain_text):
 
 def main():
     global KEY
-    print("Playfair Cipher\n")
+    print("Playfair Cipher Encryption Alg\n")
 
     KEY = input("Enter the Key: ").upper()
     print()
