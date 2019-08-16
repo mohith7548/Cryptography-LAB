@@ -15,7 +15,8 @@ def egcd(a, b):
 
 
 def modinv(a, m):
-    gcd, x, y = egcd(a, m)
+    # gcd, x, y = egcd(a, m)
+    gcd, x, _ = egcd(a, m)
     if gcd != 1:
         return None  # modular inverse does not exist
     else:
