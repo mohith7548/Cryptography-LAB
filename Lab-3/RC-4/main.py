@@ -112,9 +112,9 @@ def main():
     print('decrypted:', decrypted)
 
     if plaintext == decrypted:
-        print('\nCongrats ! You made it.')
+        print('\nBoth Matched!')
     else:
-        print('Shit! You pooped your pants ! .-.')
+        print('OOPS! Both didn\'t match')
 
     # until next time folks !
 

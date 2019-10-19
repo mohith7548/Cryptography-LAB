@@ -151,12 +151,20 @@ def Encrypt(plain_text):
         i += 2
     return "".join(cipher)
 
+def is_key_valid(key):
+    key = key.replace("J", "I")
+    for x in key:
+        if key.count(x) > 1:
+            raise('Key Must have unique chars(I, J treated the same):')
+            import sys
+            sys.exit(0)
 
 def main():
     global KEY
     print("Playfair Cipher Encryption Alg\n")
 
     KEY = input("Enter the Key: ").upper()
+    is_key_valid(KEY)
     print()
 
     initialize()
