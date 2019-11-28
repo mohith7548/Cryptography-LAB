@@ -26,6 +26,6 @@ def mul_inv(a, b):
 if __name__ == '__main__':
     # n = [3, 5, 7]
     # a = [2, 3, 2]
-    n = [1427, 187, 667]
+    n = [1927, 187, 667]
     a = [292, 146, 663]
     print(chinese_remainder(n, a))
